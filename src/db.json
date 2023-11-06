@@ -1,0 +1,139 @@
+{
+  "artists": [
+    {
+      "id": 1,
+      "nombre": "María",
+      "apellido": "López",
+      "pais": "España",
+      "nombreArtistico": "ArtMar",
+      "biografia": "Pintora expresionista que capta emociones en el lienzo.",
+      "imagen": "./assets/mujer1.jfif"
+    },
+    {
+      "id": 2,
+      "nombre": "Ricardo",
+      "apellido": "Silva",
+      "pais": "México",
+      "nombreArtistico": "RSilvaArt",
+      "biografia": "Escultor que trabaja con formas abstractas.",
+      "imagen": "./assets/hombre1.jfif"
+    },
+    {
+      "id": 3,
+      "nombre": "Sophia",
+      "apellido": "Johnson",
+      "pais": "Estados Unidos",
+      "nombreArtistico": "SJohnArt",
+      "biografia": "Artista multimedia que fusiona colores y tecnología.",
+      "imagen": "./assets/mujer2.jfif"
+    },
+    {
+      "id": 4,
+      "nombre": "Luis",
+      "apellido": "García",
+      "pais": "Argentina",
+      "nombreArtistico": "LGarArt",
+      "biografia": "Muralista que transforma espacios urbanos.",
+      "imagen": "./assets/hombre2.jfif"
+    },
+    {
+      "id": 5,
+      "nombre": "Mia",
+      "apellido": "Anders",
+      "pais": "Suecia",
+      "nombreArtistico": "MiaArt",
+      "biografia": "Fotógrafa especializada en paisajes nórdicos.",
+      "imagen": "./assets/mujer3.jfif"
+    },
+    {
+      "id": 6,
+      "nombre": "Diego",
+      "apellido": "Fernández",
+      "pais": "México",
+      "nombreArtistico": "DifArt",
+      "biografia": "Pintor surrealista que juega con la percepción.",
+      "imagen": "./assets/hombre3.jfif"
+    },
+    {
+      "id": 7,
+      "nombre": "Anna",
+      "apellido": "Kowalski",
+      "pais": "Polonia",
+      "nombreArtistico": "ArtAnna",
+      "biografia": "Artista digital que crea mundos imaginarios.",
+      "imagen": "./assets/mujer4.jfif"
+    },
+    {
+      "id": 8,
+      "nombre": "Hans",
+      "apellido": "Mueller",
+      "pais": "Alemania",
+      "nombreArtistico": "HansArt",
+      "biografia": "Dibujante de cómics, creador de personajes icónicos.",
+      "imagen": "./assets/hombre4.jfif"
+    },
+    {
+      "id": 9,
+      "nombre": "Carmen",
+      "apellido": "López",
+      "pais": "España",
+      "nombreArtistico": "CarmenArt",
+      "biografia": "Artista floral que recrea jardines en sus cuadros.",
+      "imagen": "./assets/mujer5.jfif"
+    },
+    {
+      "id": 10,
+      "nombre": "Takumi",
+      "apellido": "Yamamoto",
+      "pais": "Japón",
+      "nombreArtistico": "TYamaArt",
+      "biografia": "Calígrafo que fusiona la tradición con la modernidad.",
+      "imagen": "./assets/hombre5.jfif"
+    },
+    {
+      "id": 11,
+      "nombre": "Isabel",
+      "apellido": "Montoya",
+      "pais": "Colombia",
+      "nombreArtistico": "IMArt",
+      "biografia": "Artista conceptual que cuestiona la realidad.",
+      "imagen": "./assets/mujer6.jfif"
+    },
+    {
+      "id": 12,
+      "nombre": "Andrei",
+      "apellido": "Popov",
+      "pais": "Rusia",
+      "nombreArtistico": "PopArt",
+      "biografia": "Pintor urbano que refleja la cultura contemporánea.",
+      "imagen": "./assets/hombre6.jfif"
+    },
+    {
+      "id": 13,
+      "nombre": "Eva",
+      "apellido": "Martínez",
+      "pais": "España",
+      "nombreArtistico": "EvaArt",
+      "biografia": "Artista escénica que pinta con luz y sombras.",
+      "imagen": "./assets/mujer7.jfif"
+    },
+    {
+      "id": 14,
+      "nombre": "Alexei",
+      "apellido": "Ivanov",
+      "pais": "Rusia",
+      "nombreArtistico": "AIvanArt",
+      "biografia": "Ilustrador de cuentos infantiles con un toque mágico.",
+      "imagen": "./assets/hombre7.jfif"
+    },
+    {
+      "id": 15,
+      "nombre": "Sofia",
+      "apellido": "Costa",
+      "pais": "Portugal",
+      "nombreArtistico": "SofiaArt",
+      "biografia": "Escultora de formas orgánicas y naturales.",
+      "imagen": "./assets/mujer8.jfif"
+    }
+  ]
+}

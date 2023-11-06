@@ -1,0 +1,13 @@
+<button><a routerLink="/home">Volver a Home</a></button>
+<div *ngFor="let artist of artistsList">
+
+  <h3>{{ artist.nombre }} {{ artist.apellido }}</h3>
+  <p>Nombre artístico: {{ artist.nombreArtistico }}</p>
+  <p>Pais: {{ artist.pais }}</p>
+  <p>Biografia: {{artist.biografia}}</p>
+  <img [src]="artist.imagen" alt="Imagen del artista">
+  <button (click)="deleteArtist(artist.id)">Eliminar</button>
+
+  <!-- <button (click)="viewArtist(artist.id)">Ver detalles</button> -->
+</div>
+
