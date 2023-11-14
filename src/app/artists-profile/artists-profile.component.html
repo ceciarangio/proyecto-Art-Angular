@@ -1,11 +1,16 @@
-<form (ngSubmit)="addNewArtist()">
-  <legend>Nombre: <input type="text" [(ngModel)]="newArtist.nombre" name="nombre"></legend>
-  <legend>Apellidos: <input type="text" [(ngModel)]="newArtist.apellido" name="apellido"></legend>
-  <legend>Nombre artístico: <input type="text" [(ngModel)]="newArtist.nombreArtistico" name="nombreArtistico"></legend>
-  <legend>País: <input type="text" [(ngModel)]="newArtist.pais" name="pais"></legend>
-  <legend>Biografía: <input type="text" [(ngModel)]="newArtist.biografia" name="biografia"></legend>
-  <legend>Imagen: <input type="text" placeholder="URL de la imagen" [(ngModel)]="newArtist.imagen" name="imagen"></legend>
-  <button type="submit">Enviar registro</button>
-</form>
+<button class="home-button"><a routerLink="/home">Volver a Home</a></button>
 
-<button><a routerLink="/home">Volver a Home</a></button>
+<div class="form-container">
+  <h2>Registrarte como Artista</h2>
+<form (ngSubmit)="addNewArtist(artistForm)" #artistForm="ngForm">
+  <legend>Nombre: <input type="text" [(ngModel)]="newArtist.nombre" name="nombre" required></legend>
+  <legend>Apellidos: <input type="text" [(ngModel)]="newArtist.apellido" name="apellido" required></legend>
+  <legend>Nombre artístico: <input type="text" [(ngModel)]="newArtist.nombreArtistico" name="nombreArtistico" required></legend>
+  <legend>País: <input type="text" [(ngModel)]="newArtist.pais" name="pais" required></legend>
+  <legend>Biografía: <input type="text" [(ngModel)]="newArtist.biografia" name="biografia" required></legend>
+  <legend>Imagen: <input type="text" placeholder="URL de la imagen" [(ngModel)]="newArtist.imagen" name="imagen" required></legend>
+  <button type="submit" [disabled]="artistForm.invalid">Enviar registro</button>
+</form>
+</div>
+
+

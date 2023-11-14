@@ -1,0 +1,24 @@
+<button class="home-button"><a routerLink="/home">Volver a Home</a></button>
+<div class="form-container">
+  <h2>Agregar nueva Obra</h2>
+  <form>
+    <label for="newObraName">Nombre de la nueva obra:</label>
+    <input id="newObraName" [(ngModel)]="selectedObra.name" name="newObraName" required>
+
+    <label for="newObraDate">Fecha de la nueva obra:</label>
+    <input id="newObraDate" [(ngModel)]="selectedObra.date" name="newObraDate" required>
+
+    <label for="artistDropdown">Selecciona un artista:</label>
+    <select id="artistDropdown" [(ngModel)]="selectedArtistId" name="artistDropdown" required>
+      <option *ngFor="let artist of artistsList" [value]="artist.id">{{ artist.nombre }} {{ artist.apellido }}</option>
+    </select>
+
+    <label for="newObraDescription">Descripción de la nueva obra:</label>
+    <textarea id="newObraDescription" [(ngModel)]="selectedObra.description" name="newObraDescription" required></textarea>
+
+    <label for="newObraImage">URL de la imagen de la nueva obra:</label>
+    <input id="newObraImage" [(ngModel)]="selectedObra.image" name="newObraImage" required>
+
+    <button class="button" type="button" (click)="loadNewArtWork()">Agregar Nueva Obra</button>
+  </form>
+</div>

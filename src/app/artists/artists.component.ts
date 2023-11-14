@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { artistasI } from '../Models/artista.model';
 import { ArtistsService } from '../artists.service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-artists',
@@ -9,33 +10,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./artists.component.scss']
 })
 export class ArtistsComponent implements OnInit {
+  artistsList$: Observable<artistasI[]> = this.artistsService.getArtists();
 
-  artistsList: artistasI[] = [];
 
-  constructor(private artistsService: ArtistsService, private router: Router){}
+  constructor(private artistsService: ArtistsService, private router: Router) {}
 
-  ngOnInit(){
-    this.getArtists();
-  }
-
-  getArtists() {
-    this.artistsService.getArtists().subscribe((res) => {
-      this.artistsList = res;
-      console.log('listado de artistas: ', this.artistsList); // Agregar este log
-    },
-    (error) => {
-      console.log('error: ', error);
-    });
+  ngOnInit() {
+    this.artistsList$ = this.artistsService.getArtists();
   }
 
   deleteArtist(id: number) {
     this.artistsService.deleteArtist(id).subscribe(() => {
-      this.getArtists(); // Actualiza la lista de artistas después de eliminar uno
+      this.artistsList$ = this.artistsService.getArtists();
     });
   }
 
-  viewArtist(id: number){
+  viewArtist(id: number) {
     this.router.navigate(['/artist', id]);
-
-}
+  }
 }

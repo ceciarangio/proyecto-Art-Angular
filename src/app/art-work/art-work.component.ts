@@ -1,8 +1,8 @@
-// import { ArtWorkService } from './../art-work.service';
 // import { Component, OnInit } from '@angular/core';
-// import { obraI } from '../Models/obra.model';
-// import { Router } from '@angular/router';
+// import { ArtWorkService } from './../art-work.service';
+// import { ActivatedRoute, Router } from '@angular/router';
 // import { artistasI } from '../Models/artista.model';
+// import { obraI } from '../Models/obra.model';
 // import { ArtistsService } from '../artists.service';
 
 // @Component({
@@ -11,64 +11,64 @@
 //   styleUrls: ['./art-work.component.scss']
 // })
 // export class ArtWorkComponent implements OnInit {
-
 //   artWorkList: obraI[] = [];
 //   artistsList: artistasI[] = [];
-
-//   obra: obraI = {
-//     id: 0,
-//     name: '',
-//     date: '',
-//     description: '',
-//     image: '',
-//     artistId: 1,
-//     artist: '',
-//     likes: 0, // Inicializar los "Me gusta" a 0
-//     comments: []
-//   };
+//   selectedObra: obraI = { id: 0, name: '', date: '', description: '', image: '', artistId: 1, artist: '' };
 
 
-//   addComment(newComment: string) {
-//     if (this.obra) {
-//       if (!this.obra.comments) {
-//         this.obra.comments = [];
-//       }
-//       this.obra.comments.push(newComment);
-//       this.updateStoredObra();
-//     }
-//   }
-
-//   updateStoredObra() {
-//     localStorage.setItem('currentObra', JSON.stringify(this.obra));
-//   }
-//   like() {
-//     this.obra.likes++; // Incrementar el contador de "Me gusta" al hacer clic
-//   };
-
-//   constructor(private artWorkService: ArtWorkService, private artistsService: ArtistsService, private router: Router) {}
+//   // En el constructor
+//   constructor(
+//     private artWorkService: ArtWorkService,
+//     private artistsService: ArtistsService,
+//     private router: Router,
+//     private route: ActivatedRoute
+//   ) {}
 
 //   ngOnInit() {
+//     this.loadStoredObras();
 //     this.getArtistsAndObras();
-//     const storedObra = localStorage.getItem('currentObra');
-//     if (storedObra) {
-//       this.obra = JSON.parse(storedObra);
+
+//     this.route.paramMap.subscribe(params => {
+//       const obraId = Number(params.get('id'));
+//       if (!isNaN(obraId)) {
+//         this.loadArtWork(obraId);
+//       }
+//     });
+//   }
+
+//   loadStoredObras() {
+//     const storedObras: obraI[] = [];
+//     for (let i = 0; i < localStorage.length; i++) {
+//       const key = localStorage.key(i);
+//       if (key && key.startsWith('currentObra_')) {
+//         const obra = JSON.parse(localStorage.getItem(key) || '');
+//         storedObras.push(obra);
+//       }
 //     }
+//     this.artWorkList = storedObras;
 //   }
 
 //   getArtistsAndObras() {
 //     this.artistsService.getArtists().subscribe((artists) => {
 //       this.artistsList = artists;
-//       console.log('Lista de artistas: ', this.artistsList);
 
-//       // Una vez que los artistas se han cargado, se obtienen las obras
 //       this.artWorkService.getObras().subscribe((obras) => {
+//         obras.forEach(obra => {
+//           obra.artistId = obra.artistId || 1;
+//         });
+
 //         this.artWorkList = obras;
-//         console.log('Lista de obras: ', this.artWorkList);
 //       }, (error) => {
 //         console.log('Error al obtener obras: ', error);
 //       });
 //     }, (error) => {
 //       console.log('Error al obtener artistas: ', error);
+//     });
+//   }
+
+//   loadArtWork(id: number) {
+//     this.artWorkService.getObrasById(id).subscribe((obra) => {
+//       this.selectedObra = obra;
 //     });
 //   }
 
@@ -79,22 +79,26 @@
 
 //   deleteObras(id: number) {
 //     this.artWorkService.deleteObras(id).subscribe(() => {
-//       this.getArtistsAndObras(); // Actualiza la lista de artistas y obras después de eliminar una obra
+//       this.getArtistsAndObras();
 //     });
 //   }
 
 //   viewObras(id: number) {
 //     this.router.navigate(['/artworks', id]);
 //   }
+
+
+//   selectedArtistId: number | undefined;
+
+
 // }
 
 
 import { Component, OnInit } from '@angular/core';
 import { ArtWorkService } from './../art-work.service';
-import { Router } from '@angular/router';
-import { artistasI } from '../Models/artista.model';
-import { obraI } from '../Models/obra.model';
 import { ArtistsService } from '../artists.service';
+import { obraI } from '../Models/obra.model';
+import { artistasI } from '../Models/artista.model';
 
 @Component({
   selector: 'app-art-work',
@@ -104,36 +108,27 @@ import { ArtistsService } from '../artists.service';
 export class ArtWorkComponent implements OnInit {
   artWorkList: obraI[] = [];
   artistsList: artistasI[] = [];
-  selectedObra: obraI = { id: 0, name: '', date: '', description: '', image: '', artistId: 1, artist: '', likes: 0, comments: [] };
+  selectedObra: obraI = { id: 0, name: '', date: '', description: '', image: '', artistId: 1, artist: '', likes: 0 };
 
-  constructor(private artWorkService: ArtWorkService, private artistsService: ArtistsService, private router: Router) {}
+  constructor(
+    private artWorkService: ArtWorkService,
+    private artistsService: ArtistsService
+  ) {}
 
   ngOnInit() {
-      this.loadStoredObras();
-      this.getArtistsAndObras();
-    }
-
-    loadStoredObras() {
-      const storedObras: obraI[] = [];
-      for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        if (key && key.startsWith('currentObra_')) {
-          const obra = JSON.parse(localStorage.getItem(key) || '');
-          storedObras.push(obra);
-        }
-      }
-      this.artWorkList = storedObras;
-    }
-
+    this.getArtistsAndObras();
+  }
 
   getArtistsAndObras() {
     this.artistsService.getArtists().subscribe((artists) => {
       this.artistsList = artists;
-      console.log('Lista de artistas: ', this.artistsList);
 
       this.artWorkService.getObras().subscribe((obras) => {
+        obras.forEach(obra => {
+          obra.artistId = obra.artistId || 1;
+        });
+
         this.artWorkList = obras;
-        console.log('Lista de obras: ', this.artWorkList);
       }, (error) => {
         console.log('Error al obtener obras: ', error);
       });
@@ -147,34 +142,24 @@ export class ArtWorkComponent implements OnInit {
     return artist ? `${artist.nombre} ${artist.apellido}` : 'Artista Desconocido';
   }
 
+
+
   deleteObras(id: number) {
     this.artWorkService.deleteObras(id).subscribe(() => {
       this.getArtistsAndObras();
     });
   }
 
-  viewObras(id: number) {
-    this.router.navigate(['/artworks', id]);
-  }
+  likeArtWork(id: number) {
+    this.artWorkService.likeArtWork(id).subscribe(
+      (response) => {
+        console.log('Like successful', response);
+        // Realiza alguna acción adicional si es necesario
+      },
+      (error) => {
+        console.error('Error al dar like:', error);
+      }
+    );
 
-  addComment(obra: obraI, newComment: string) {
-    if (!obra.comments) {
-      obra.comments = [];
-    }
-    obra.comments.push(newComment);
-    this.updateStoredObra(obra);
-  }
-
-  like(obra: obraI) {
-    if (!obra.likes) {
-      obra.likes = 0;
-    }
-    obra.likes++;
-    this.updateStoredObra(obra);
-  }
-
-  updateStoredObra(obra: obraI) {
-    localStorage.setItem(`currentObra_${obra.id}`, JSON.stringify(obra));
-  }
-
+}
 }

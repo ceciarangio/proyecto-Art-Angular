@@ -9,6 +9,8 @@ import { ArtWorkComponent } from './art-work/art-work.component';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './Home/home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AddArtComponent } from './add-art/add-art.component';
+
 
 
 
@@ -18,7 +20,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ArtistsComponent,
     ArtistsProfileComponent,
     ArtWorkComponent,
-    HomeComponent
+    HomeComponent,
+    AddArtComponent,
+
   ],
   imports: [
     BrowserModule,

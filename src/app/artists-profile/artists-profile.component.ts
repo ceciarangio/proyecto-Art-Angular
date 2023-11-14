@@ -1,6 +1,7 @@
 import { ArtistsService } from './../artists.service';
 import { Component, OnInit } from '@angular/core';
 import { artistasI } from '../Models/artista.model';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-artists-profile',
@@ -32,10 +33,11 @@ export class ArtistsProfileComponent implements OnInit {
     });
   }
 
-  addNewArtist() {
+  addNewArtist(form: NgForm) {
     this.artistsService.addArtist(this.newArtist).subscribe((artist) => {
       console.log('Artista agregado: ', artist);
-      this.getArtists();
+      this.getArtists(); // Actualiza la lista de artistas después de agregar uno nuevo
+      form.resetForm(); // Reinicia el formulario
     });
   }
 }

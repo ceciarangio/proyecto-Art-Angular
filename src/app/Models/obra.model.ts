@@ -7,6 +7,5 @@ export interface obraI{
   image: string,
   artistId?: any,
   artist: string,
-  likes: number,
-  comments?: string[]
+  likes?: number
 }

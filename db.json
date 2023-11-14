@@ -135,5 +135,70 @@
       "biografia": "Escultora de formas orgánicas y naturales.",
       "imagen": "./assets/mujer8.jfif"
     }
+  ],
+  "artworksOk": [
+    {
+      "id": 1,
+      "name": "Cunégonde",
+      "date": "28/09/2023",
+      "description": "Quality Control Specialist",
+      "image": "./assets/Leonardo_Diffusion_XL_obra_de_arte_contemporaneo_con_figuras_g_0.jpg",
+      "artistId": 1,
+      "likes": 3
+    },
+    {
+      "id": 2,
+      "name": "Salomé",
+      "date": "14/03/2023",
+      "description": "Occupational Therapist",
+      "image": "./assets/Leonardo_Diffusion_XL_obra_de_arte_contemporaneo_con_figuras_g_1.jpg",
+      "artistId": 1,
+      "likes": 1
+    },
+    {
+      "id": 3,
+      "name": "Anaël",
+      "date": "05/10/2023",
+      "description": "Research Associate",
+      "image": "./assets/Leonardo_Diffusion_XL_obra_de_arte_contemporaneo_ocn_lineas_en_0.jpg",
+      "artistId": 2,
+      "likes": 1
+    },
+    {
+      "id": 4,
+      "name": "Mélissandre",
+      "date": "26/03/2023",
+      "description": "Food Chemist",
+      "image": "./assets/Leonardo_Diffusion_XL_obra_de_arte_contemporaneo_ocn_lineas_en_2.jpg",
+      "artistId": 2,
+      "likes": 0
+    },
+    {
+      "id": 5,
+      "name": "Thérèse",
+      "date": "27/06/2023",
+      "description": "Executive Secretary",
+      "image": "./assets/Leonardo_Diffusion_XL_obra_de_arte_contemporaneo_ocn_lineas_en_3.jpg",
+      "artistId": 2,
+      "likes": 0
+    },
+    {
+      "id": 6,
+      "name": "Bénédicte",
+      "date": "06/08/2023",
+      "description": "Quality Engineer",
+      "image": "./assets/Leonardo_Diffusion_XL_obra_de_arte_gotico_0.jpg",
+      "artistId": 3,
+      "likes": 0
+    },
+    {
+      "id": 7,
+      "name": "Gaëlle",
+      "date": "15/03/2023",
+      "description": "Physical Therapy Assistant",
+      "image": "./assets/Leonardo_Diffusion_XL_obra_de_arte_gotico_1.jpg",
+      "artistId": 3,
+      "likes": 0
+    }
   ]
 }

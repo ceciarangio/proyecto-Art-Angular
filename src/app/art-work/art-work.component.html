@@ -1,41 +1,17 @@
- <!-- <button><a routerLink="/home">Volver a Home</a></button>
 
-<div *ngFor="let obras of artWorkList">
-  <h3>{{ obras.name }}</h3>
-  <p>Creada: {{ obras.date }}</p>
-  <p>Descripcion: {{ obras.description }}</p>
-  <p>Artista: {{ getArtistName(obras.artistId) }}</p>
-  <img [src]="obras.image" alt="Imagen del artista">
-  <button (click)="deleteObras(obras.id)">Eliminar</button>
-  <div>
-    <h2>{{ obra.name }}</h2>
-    <img [src]="obra.image" alt="{{ obra.name }}" width="200">
-    <p>{{ obra.description }}</p>
-    <button (click)="like()">Me gusta ({{ obra.likes }})</button>
-    <h3>Comentarios</h3>
-    <ul>
-      <li *ngFor="let comment of obra.comments">{{ comment }}</li>
-    </ul>
-    <input #newComment type="text">
-    <button (click)="addComment(newComment.value)">Agregar Comentario</button>
-  </div>
-</div> -->
+<button class="home-button"><a routerLink="/home">Volver a Home</a></button>
+<button class="home-button"><a routerLink="/add-art">Agregar Obra</a></button>
 
-<button><a routerLink="/home">Volver a Home</a></button>
-<div *ngFor="let obra of artWorkList">
-  <h3>{{ obra.name }}</h3>
-  <!-- ... (resto del contenido de la obra) -->
-  <button (click)="deleteObras(obra.id)">Eliminar</button>
-  <div>
-    <h2>{{ obra.name }}</h2>
-    <img [src]="obra.image" alt="{{ obra.name }}" width="200">
+<div class="cards-container">
+  <div *ngFor="let obra of artWorkList" class="obra-card">
+    <h2>Obra: {{ obra.name }}</h2>
+    <img [src]="obra.image" alt="{{ obra.name }}">
+    <h4>Artista: {{ getArtistName(obra.artistId) }}</h4>
+    <p>{{obra.date}}</p>
     <p>{{ obra.description }}</p>
-    <button (click)="like(obra)">Me gusta ({{ obra.likes }})</button>
-    <h3>Comentarios</h3>
-    <ul>
-      <li *ngFor="let comment of obra.comments">{{ comment }}</li>
-    </ul>
-    <input #newComment type="text">
-    <button (click)="addComment(obra, newComment.value)">Agregar Comentario</button>
+    <button (click)="likeArtWork(obra.id)" class="like-button">
+      Me gusta ({{ obra.likes || 0 }})
+    </button>
+    <button (click)="deleteObras(obra.id)" class="delete-button">Eliminar</button>
   </div>
 </div>

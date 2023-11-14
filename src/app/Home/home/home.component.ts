@@ -8,9 +8,4 @@ import { artistasI } from 'src/app/Models/artista.model';
 })
 export class HomeComponent {
 
-  // // @Input() artists: artistasI[] = [];
-
-  // ngOnInit() {
-  //   console.log(this.artists); // Verifica si los datos se están recibiendo aquí
-  // }
 }
